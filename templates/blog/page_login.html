@@ -1,0 +1,32 @@
+{% load staticfiles %}
+<html>
+<head>
+    <title>Tasks</title>
+
+    <link rel="stylesheet" href="{% static 'css/Login.css' %}">
+</head>
+
+
+<body>
+    <div class="box">
+
+        <h2>Login</h2>
+
+        <form method="POST">{% csrf_token %}
+
+
+                <label for="username">Username</label>
+                <input type="text" name="username" id="username" placeholder="Username">
+
+                <label for="password">Password</label>
+                <input type="password" name="password" id="password" placeholder="Password">
+
+
+
+            <!-- Submit -->
+
+            <input type="submit" id="submit" value="Login">
+        </form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,88 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="../../docs-assets/ico/favicon.png">
+
+    <title>TasksBoard</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="{% static 'css/bootstrap.css' %}" rel="stylesheet">
+
+
+    <!-- Custom styles for this template -->
+    <link href="{% static 'css/main.css' %}" rel="stylesheet">
+
+
+</head>
+
+<body>
+
+<!-- Static navbar -->
+<div class="navbar navbar-inverse navbar-static-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/task_list">TASKSBOARD</a>
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="/task_list">Задачи</a></li>
+                <li><a href="/login_detail">Личный кабинет</a></li>
+                {% if username %}
+                <li><a href="/logout">Выйти({{ username }})</a></li>
+                {% else %}
+                    <li><a href="login">Войти</a></li>
+                {% endif %}
+            </ul>
+        </div><!--/.nav-collapse -->
+    </div>
+</div>
+
+{% block content %}
+{% endblock %}
+
+
+<div id="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4">
+                <h4>Адрес:</h4>
+                <p>
+                    2-й Велосипедный переулок, 30<br/>
+                    8(044)726-77-56, <br/>
+                    OОО «Безопасность Он-Лайн».
+                </p>
+            </div><!-- /col-lg-4 -->
+
+            <div class="col-lg-4">
+                <h4>Контакты:</h4>
+                <p>
+                    Почта для связи с компанией:
+                    <br><a>hr@security-online.by</a>
+                    <br>Сообщить о баге сервиса: <a href="https://vk.com/vershiloandrey">Vk</a>
+                </p>
+            </div><!-- /col-lg-4 -->
+
+            <div class="col-lg-4">
+                <h4>О компании</h4>
+                <p>OОО «Безопасность Он-Лайн» - инженерная компания, специализирующаяся на оперативном монтаже, техническом обслуживании и модернизации интегрированных и распределенных систем безопасности.</p>
+            </div><!-- /col-lg-4 -->
+
+        </div>
+
+    </div>
+</div>
+
+</body>
+</html>
+
