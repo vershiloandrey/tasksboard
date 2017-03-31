@@ -1,9 +1,11 @@
 from django.db import models
 from django.utils import timezone
+from django.contrib.auth.models import User
 import uuid
 
 
 class Login(models.Model):
+
     login = models.CharField(max_length=100)
     first_name = models.CharField(max_length=100)
     last_name = models.CharField(max_length=100)
@@ -21,7 +23,7 @@ class Task(models.Model):
     id = models.BigIntegerField(default=0, unique=True, primary_key=True)
     title = models.CharField(max_length=100)
     text = models.TextField()
-    employee = models.ForeignKey('Login')
+    employee = models.ForeignKey('userprofile.UserProfile')
     published_date = models.DateTimeField(blank=True, null=True)
 
     # image = models.ImageField(upload_to='images/')
