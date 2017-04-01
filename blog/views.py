@@ -1,12 +1,9 @@
-from django.shortcuts import render, redirect, get_object_or_404
+from django.shortcuts import render, redirect
 from .models import Task
-from .models import Login
 from .models import Comment
 from django.contrib.auth import authenticate
 from django.contrib import auth
 from .forms import CommentForm
-from django.contrib.auth.models import User
-
 
 
 def login(request):
@@ -35,15 +32,16 @@ def logout(request):
 
 def task_list(request):
     print(auth.get_user(request).username)
-    #tasks = Task.objects.all()
-    #tasks = Task.objects.filter(employee=auth.get_user(request).username)
     tasks = Task.objects.filter(employee__user__username=auth.get_user(request).username)
-    return render(request, 'blog/task_list.html', {'tasks': tasks, 'username': auth.get_user(request).username})
+    return render(request, 'blog/task_list.html', {'tasks': tasks,
+                                                   'username': auth.get_user(request).username})
 
 
 def task_detail(request, task_id=1):
-    return render(request, 'blog/task_detail.html',
-                  {'task': Task.objects.get(id=task_id), 'comments': Comment.objects.filter(comment_task=task_id)})
+    return render(request, 'blog/task_details.html',
+                  {'task': Task.objects.get(id=task_id),
+                   'comments': Comment.objects.filter(comment_task=task_id),
+                   'username': auth.get_user(request).username})
 
 
 def addComment(request, task_id=1):

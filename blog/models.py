@@ -1,7 +1,6 @@
 from django.db import models
 from django.utils import timezone
 from django.contrib.auth.models import User
-import uuid
 
 
 class Login(models.Model):
@@ -19,7 +18,6 @@ class Login(models.Model):
 
 
 class Task(models.Model):
-    #id = models.CharField(default=str(uuid.uuid1()), max_length=50)
     id = models.BigIntegerField(default=0, unique=True, primary_key=True)
     title = models.CharField(max_length=100)
     text = models.TextField()
@@ -37,5 +35,9 @@ class Task(models.Model):
 
 
 class Comment(models.Model):
-        comment = models.TextField()
-        comment_task = models.ForeignKey(Task)
+    comment = models.TextField()
+    comment_task = models.ForeignKey('Task')
+    comment_user = models.ForeignKey('userprofile.UserProfile')
+
+    def __str__(self):
+        return self.comment

@@ -1,0 +1,45 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+
+    <!-- +++++ Projects Section +++++ -->
+
+    <div class="container pt">
+
+
+            <div id="tb-testimonial" class="testimonial testimonial-info">
+                <div class="testimonial-section">
+                 <h1>{{ task.title }}</h1>
+                <p>Текст задания:<br>{{ task.text }}</p>
+                <p>Задание для:<br>{{ task.employee }}</p>
+                </div>
+
+		</div>
+
+        <p>Комментарии:</p>
+        {% for comment in comments %}
+            <div class="row">
+                <div class="col-sm-1">
+                    <div class="thumbnail">
+                        <img class="img-responsive user-photo" src="https://ssl.gstatic.com/accounts/ui/avatar_2x.png">
+                    </div><!-- /thumbnail -->
+                </div><!-- /col-sm-1 -->
+
+                <div class="col-sm-5">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <strong>{{ comment.comment_user }}</strong> <span
+                                class="text-muted">publish time</span>
+                        </div>
+                        <div class="panel-body">
+                            {{ comment.comment }}
+                        </div><!-- /panel-body -->
+                    </div><!-- /panel panel-default -->
+                </div><!-- /col-sm-5 -->
+            </div><!-- /row -->
+        {% endfor %}
+
+    </div><!-- /row -->
+    </div><!-- /container -->
+
+{% endblock content %}

@@ -18,6 +18,8 @@
     <!-- Custom styles for this template -->
     <link href="{% static 'css/main.css' %}" rel="stylesheet">
 
+    <link href="{% static 'css/task_view.css' %}" rel="stylesheet">
+
 
 </head>
 
@@ -39,7 +41,7 @@
                 <li><a href="/task_list">Задачи</a></li>
                 <li><a href="/login_detail">Личный кабинет</a></li>
                 {% if username %}
-                <li><a href="/logout">Выйти({{ username }})</a></li>
+                    <li><a href="/logout">Выйти({{ username }})</a></li>
                 {% else %}
                     <li><a href="login">Войти</a></li>
                 {% endif %}

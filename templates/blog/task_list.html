@@ -21,7 +21,7 @@
         <div class="row mt centered">
             {% for task in tasks %}
                 <div class="col-lg-4">
-                    <a class="zoom green" href="/task_detail/1"><img class="img-responsive"
+                    <a class="zoom green" href="/task_detail/{{ task.id }}"><img class="img-responsive"
                                                                   src="static/img/portfolio/4.png" alt="Изображение не прогрузилось. Попробуйте обновить страницу"/></a>
                     <p>{{ task.title }}</p>
                 </div>
