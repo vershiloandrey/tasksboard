@@ -8,7 +8,8 @@
     <div class="container pt">
         <div class="row mt centered">
          <h1>{{ task.title }}</h1>
-         <p>{{ task.text }}</p>
+         <p>Текст задания:<br>{{ task.text }}</p>
+         <p>Задание для:<br>{{ task.employee }}</p>
 
         <p>Комментарии:</p>
         {% for comment in comments%}

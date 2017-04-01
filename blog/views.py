@@ -1,10 +1,12 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from .models import Task
 from .models import Login
 from .models import Comment
 from django.contrib.auth import authenticate
 from django.contrib import auth
 from .forms import CommentForm
+from django.contrib.auth.models import User
+
 
 
 def login(request):
@@ -32,7 +34,10 @@ def logout(request):
 
 
 def task_list(request):
-    tasks = Task.objects.all()
+    print(auth.get_user(request).username)
+    #tasks = Task.objects.all()
+    #tasks = Task.objects.filter(employee=auth.get_user(request).username)
+    tasks = Task.objects.filter(employee__user__username=auth.get_user(request).username)
     return render(request, 'blog/task_list.html', {'tasks': tasks, 'username': auth.get_user(request).username})
 
 
